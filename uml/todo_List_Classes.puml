@@ -1,0 +1,96 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class TodoLists
+{
+main()
+start()
+}
+
+
+class ItemsGUIController
+{
+-mainPane: SplitPane
+-descriptionText: TextField
+-datePicker: DatePicker
+-completeButton: Button
+-addItemButton: Button
+-deleteButton: Button
+-updateButton: Button
+-errorLabel: Label
+-splitPane: SplitPane
+-urgentCheckbox: Checkbox
+-noDueDateCheckbox: Checkbox
+-taskItems: ListView<Items_Of_TodoList>
+-taskItemsDone: ListView<Items_Of_TodoList>
++items: ObservableList<Items_Of_TodoList>
++itemsDoneDone: ObservableList<Items_Of_TodoList>
++fc: FileChooser()
++fname: String
++index: int
++isopened: boolean
+
++addNewItem: void (ActionEvent)
+-addItemValidate(): boolean
+-addItemCommit(): void
++markitemsAsComplete(): void (ActionEvent)
++addItems(): void (ActionEvent)
++deleteItem(): void (ActionEvent)
++noDueDateSelected(): void (ActionEvent)
++urgentSelected(): void (ActionEvent)
++doneitemsListClicked(): void (MouseEvent)
++itemsListClicked(): void (MouseEvent)
++addItemClicked(): void (MouseEvent)
++sortListByDate(ObservableList<Items_Of_TodoList> items): void
++initialize(): void
++saveItemData(): void
++loadItemData(): void
++saveClicked(): void (ActionEvent)
++openClicked(): void (ActionEvent)
++clearClicked(): void (ActionEvent)
++editItemClicked(): void (ActionEvent)
+-toggleButtons(): void
+-isDuplicate(): boolean
+-printError(): void
+-enterPressed(): void
+
+}
+
+
+class AppData
+{
+-list: ArrayList<Items_of_TodoList>
+-listDone: ArrayList<Items_of_TodoList>
++AppData(): Constructor
++getList():  ArrayList<Items_of_TodoList>
++getListDone(): ArrayList<Items_of_TodoList>
+}
+
+class Items_of_TodoList
+{
+-dueDate: LocalDate
+-completionDate: LocalDate
+-description: String
+-completed: boolean
+-urgent: boolean
++Items_Of_TodoList(String description, LocalDate date, boolean urgent): Constructor
++toString(): String (@Override)
++getCompletionDate(): LocalDate
++setCompletionDate(): void
++isUrgent(): boolean
++setUrgent(): void
++getDueDate(): LocalDate
++setDueDate(): void
++getDescription(): String
++setDescription(): void
++isCompleted(): boolean
++setCompleted(): void
+}
+
+javaFX.Application <-- TodoLists
+TodoLists - ItemsGUIController
+AppData *-- Items_of_TodoList
+ItemsGUIController *-- Items_of_TodoList
+ItemsGUIController *-- AppData
+
+@enduml
