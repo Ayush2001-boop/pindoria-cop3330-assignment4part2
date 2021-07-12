@@ -44,7 +44,7 @@ It indicates that the item has been deleted from the items lists
 After the user is satisfied with the data
 He/She can click on the Save As button
 This will open the directory where the IntellijProject is stored
-User should enter the name of the file and click on Save
+User should enter the name of the file and click on Save (Do not add .txt to filename, this is very important)
 By default the file will be saved as a .txt file 
 with the app data stored in byte stream
 
