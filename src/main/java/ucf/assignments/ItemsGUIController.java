@@ -418,7 +418,8 @@ public class ItemsGUIController
 
 
         */
-        fc.setInitialDirectory(new File("C:\\Users\\eyeyu\\Desktop\\Assignment4"));
+        String path = System.getProperty("user.dir");
+        fc.setInitialDirectory(new File(path));
         datePicker.setValue(LocalDate.now());
        //toggleButtons(items.isEmpty() && itemsDone.isEmpty());
         toggleButtons(false);
